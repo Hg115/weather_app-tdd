@@ -44,7 +44,7 @@ void main() {
         //act
         datasource.getForecastWeather(city);
         //assert
-        verifyNever(mockHttpClient.get(
+        verify(mockHttpClient.get(
           Uri.parse('https://goweather.herokuapp.com/weather/$city'),
           headers: {
             'Content-Type': 'application/json',
