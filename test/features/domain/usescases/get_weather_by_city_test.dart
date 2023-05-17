@@ -20,9 +20,9 @@ void main() {
   });
 
   const tForecast = [
-    ForecastModel(day: 1, temperature: "32 °C", wind: "3 km/h"),
-    ForecastModel(day: 2, temperature: "29 °C", wind: "4 km/h"),
-    ForecastModel(day: 3, temperature: "26 °C", wind: "7 km/h"),
+    ForecastModel(day: "1", temperature: "32 °C", wind: "3 km/h"),
+    ForecastModel(day: "2", temperature: "29 °C", wind: "4 km/h"),
+    ForecastModel(day: "3", temperature: "26 °C", wind: "7 km/h"),
   ];
 
   const tWeather = WeatherModel(
@@ -31,6 +31,7 @@ void main() {
       description: "Sunny",
       forecast: tForecast);
 
+  const tCity = "Caracas";
   test(
     "should get weather by city from the repository",
     () async {
@@ -39,9 +40,10 @@ void main() {
           .thenAnswer((_) async => const Right(tWeather));
 
       //act
-      final result = await usecase(Params(city: "Caracas"));
+      final result = await usecase(const ParamsCity(city: tCity));
 
-      verify(mockWeatherRepository.getForecast("Caracas"));
+      expect(result, const Right(tWeather));
+      verify(mockWeatherRepository.getForecast(tCity));
       verifyNoMoreInteractions(mockWeatherRepository);
     },
   );

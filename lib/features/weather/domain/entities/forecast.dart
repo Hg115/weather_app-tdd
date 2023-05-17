@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Forecast extends Equatable {
-  final int day;
+  final String day;
   final String temperature;
   final String wind;
 

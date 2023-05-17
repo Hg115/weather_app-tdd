@@ -8,14 +8,14 @@ import '../../../fixtures/fixture_reader.dart';
 
 void main() {
   const tForecast = [
-    ForecastModel(day: 1, temperature: "32 °C", wind: "3 km/h"),
-    ForecastModel(day: 2, temperature: "29 °C", wind: "4 km/h"),
-    ForecastModel(day: 3, temperature: "26 °C", wind: "7 km/h"),
+    ForecastModel(day: "1", temperature: "26 °C", wind: "5 km/h"),
+    ForecastModel(day: "2", temperature: "26 °C", wind: "2 km/h"),
+    ForecastModel(day: "3", temperature: "+29 °C", wind: "2 km/h"),
   ];
 
   const tWeather = WeatherModel(
-      temperature: "29 °C",
-      wind: "12 km/h",
+      temperature: "+29 °C",
+      wind: "15 km/h",
       description: "Sunny",
       forecast: tForecast);
   test(
@@ -49,8 +49,8 @@ void main() {
 
         //assert
         final expectedMap = {
-          'temperature': "29 °C",
-          'wind': "12 km/h",
+          'temperature': "+29 °C",
+          'wind': "15 km/h",
           'description': "Sunny",
           'forecast': tForecast
         };

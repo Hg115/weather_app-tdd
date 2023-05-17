@@ -6,7 +6,7 @@ class ForecastModel extends Forecast {
 
   factory ForecastModel.fromJson(Map<String, dynamic> json) {
     return ForecastModel(
-      day: (json["day"] as num).toInt(),
+      day: json["day"],
       temperature: json["temperature"],
       wind: json["wind"],
     );
